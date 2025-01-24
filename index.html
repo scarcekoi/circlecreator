@@ -42,7 +42,7 @@
 <body>
     <h1>Circle Drawer</h1>
     <canvas id="circleCanvas" width="600" height="600"></canvas>
-    <input type="number" id="radiusInput" placeholder="Enter radius in inches" min="1">
+    <input type="number" id="radiusInput" placeholder="Enter radius" min="1">
     <button onclick="drawCircle()">Draw Circle</button>
 
     <script>
@@ -51,13 +51,13 @@
 
         function drawCircle() {
             const input = document.getElementById('radiusInput');
-            const radiusInInches = parseFloat(input.value);
-            if (isNaN(radiusInInches) || radiusInInches <= 0) {
+            const radius = parseFloat(input.value);
+            if (isNaN(radiusInInches) || radiu <= 0) {
                 alert("Please enter a valid radius.");
                 return;
             }
 
-            const radiusInPixels = radiusInInches * 10;
+            const radiusInPixels = radius * 5;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.beginPath();
             ctx.arc(canvas.width / 2, canvas.height / 2, radiusInPixels, 0, Math.PI * 2);
