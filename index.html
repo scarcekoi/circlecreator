@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circle Drawer</title>
+    <style>
+        body {
+            background-color: #181825;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            color: #f5e0dc;
+            font-family: Arial, sans-serif;
+        }
+        canvas {
+            border: 1px solid #f5e0dc;
+        }
+        input, button {
+            margin-top: 10px;
+            padding: 8px 12px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Circle Drawer</h1>
+    <canvas id="circleCanvas" width="600" height="600"></canvas>
+    <input type="number" id="radiusInput" placeholder="Enter radius in inches" min="1">
+    <button onclick="drawCircle()">Draw Circle</button>
+
+    <script>
+        const canvas = document.getElementById('circleCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Function to draw a circle
+        function drawCircle() {
+            const input = document.getElementById('radiusInput');
+            const radiusInInches = parseFloat(input.value);
+            if (isNaN(radiusInInches) || radiusInInches <= 0) {
+                alert("Please enter a valid radius.");
+                return;
+            }
+
+            const radiusInPixels = radiusInInches * 10;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.beginPath();
+            ctx.arc(canvas.width / 2, canvas.height / 2, radiusInPixels, 0, Math.PI * 2);
+            ctx.strokeStyle = "#f5e0dc";
+            ctx.lineWidth = 3;
+            ctx.stroke();
+        }
+    </script>
+</body>
+</html>
