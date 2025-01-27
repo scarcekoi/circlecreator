@@ -52,7 +52,7 @@
         function drawCircle() {
             const input = document.getElementById('radiusInput');
             const radius = parseFloat(input.value);
-            if (isNaN(radiusInInches) || radius <= 0) {
+            if (isNaN(radius) || radius <= 0) {
                 alert("Please enter a valid radius.");
                 return;
             }
