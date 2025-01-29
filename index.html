@@ -17,15 +17,9 @@
             font-family: Arial, sans-serif;
         }
         .canvas-container {
-            position: relative;
-        }
-        .controls {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
             display: flex;
             flex-direction: column;
-            align-items: flex-end;
+            align-items: center;
         }
         .sidebar {
             margin-left: 20px;
@@ -41,6 +35,12 @@
         }
         canvas {
             border: 1px solid #cba6f7;
+        }
+        .controls {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         input, button {
             margin-top: 10px;
@@ -100,12 +100,10 @@
             ctx.lineWidth = 3;
             ctx.stroke();
 
-            // Calculate properties
             const diameter = 2 * radius;
             const circumference = 2 * Math.PI * radius;
             const area = Math.PI * radius * radius;
 
-            // Update sidebar
             document.getElementById('radius').innerHTML = `<i>r</i>: ${radius}`;
             document.getElementById('diameter').innerHTML = `<i>d</i>: ${diameter}`;
             document.getElementById('circumference').innerHTML = `<i>C</i>: ${circumference.toFixed(2)}`;
