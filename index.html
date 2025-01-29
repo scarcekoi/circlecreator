@@ -8,13 +8,21 @@
         body {
             background-color: #11111b;
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
             color: #cba6f7;
             font-family: Arial, sans-serif;
+        }
+        .main-container {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: center;
+            width: 100%;
+            max-width: 1000px;
         }
         .canvas-container {
             display: flex;
@@ -27,6 +35,7 @@
             font-family: 'Georgia', serif;
             color: #f5c2e7;
             word-wrap: break-word;
+            max-width: 200px;
         }
         .sidebar h2 {
             margin-bottom: 10px;
@@ -34,6 +43,7 @@
         .sidebar p {
             margin: 5px 0;
             font-size: 18px;
+            word-break: break-word;
         }
         canvas {
             border: 1px solid #cba6f7;
@@ -65,19 +75,21 @@
     </style>
 </head>
 <body>
-    <div class="canvas-container">
-        <h1>Circle Drawer</h1>
-        <canvas id="circleCanvas" width="600" height="600"></canvas>
-        <div class="controls">
-            <input type="number" id="radiusInput" placeholder="Enter radius" min="1">
-            <button onclick="drawCircle()">Draw Circle</button>
+    <h1>Circle Drawer</h1>
+    <div class="main-container">
+        <div class="canvas-container">
+            <canvas id="circleCanvas" width="600" height="600"></canvas>
+            <div class="controls">
+                <input type="number" id="radiusInput" placeholder="Enter radius" min="1">
+                <button onclick="drawCircle()">Draw Circle</button>
+            </div>
         </div>
-    </div>
-    <div class="sidebar">
-        <p id="radius"><i>r</i>: -</p>
-        <p id="diameter"><i>d</i>: -</p>
-        <p id="circumference"><i>C</i>: -</p>
-        <p id="area"><i>A</i>: -</p>
+        <div class="sidebar">
+            <p id="radius"><i>r</i>: -</p>
+            <p id="diameter"><i>d</i>: -</p>
+            <p id="circumference"><i>C</i>: -</p>
+            <p id="area"><i>A</i>: -</p>
+        </div>
     </div>
 
     <script>
