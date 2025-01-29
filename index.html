@@ -99,6 +99,11 @@
             ctx.lineWidth = 3;
             ctx.stroke();
 
+            ctx.beginPath();
+            ctx.arc(canvas.width / 2, canvas.height / 2, 3, 0, Math.PI * 2);
+            ctx.fillStyle = "#f5c2e7";
+            ctx.fill();
+
             const diameter = 2 * radius;
             const circumference = 2 * Math.PI * radius;
             const area = Math.PI * radius * radius;
