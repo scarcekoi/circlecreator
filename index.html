@@ -8,13 +8,25 @@
         body {
             background-color: #11111b;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
             justify-content: center;
             height: 100vh;
             margin: 0;
             color: #cba6f7;
             font-family: Arial, sans-serif;
+        }
+        .sidebar {
+            margin-left: 20px;
+            font-family: 'Georgia', serif;
+            color: #f5c2e7;
+        }
+        .sidebar h2 {
+            margin-bottom: 10px;
+        }
+        .sidebar p {
+            margin: 5px 0;
+            font-size: 18px;
         }
         canvas {
             border: 1px solid #cba6f7;
@@ -40,10 +52,19 @@
     </style>
 </head>
 <body>
-    <h1>Circle Drawer</h1>
-    <canvas id="circleCanvas" width="600" height="600"></canvas>
-    <input type="number" id="radiusInput" placeholder="Enter radius" min="1">
-    <button onclick="drawCircle()">Draw Circle</button>
+    <div>
+        <h1>Circle Drawer</h1>
+        <canvas id="circleCanvas" width="600" height="600"></canvas>
+        <input type="number" id="radiusInput" placeholder="Enter radius" min="1">
+        <button onclick="drawCircle()">Draw Circle</button>
+    </div>
+    <div class="sidebar">
+        <h2>Circle Properties</h2>
+        <p id="radius">r: -</p>
+        <p id="diameter">d: -</p>
+        <p id="circumference">C: -</p>
+        <p id="area">A: -</p>
+    </div>
 
     <script>
         const canvas = document.getElementById('circleCanvas');
@@ -52,6 +73,7 @@
         function drawCircle() {
             const input = document.getElementById('radiusInput');
             const radius = parseFloat(input.value);
+
             if (isNaN(radius) || radius <= 0) {
                 alert("Please enter a valid radius.");
                 return;
@@ -64,6 +86,15 @@
             ctx.strokeStyle = "#cba6f7";
             ctx.lineWidth = 3;
             ctx.stroke();
+
+            const diameter = 2 * radius;
+            const circumference = 2 * Math.PI * radius;
+            const area = Math.PI * radius * radius;
+
+            document.getElementById('radius').innerHTML = `r: <i>${radius}</i>`;
+            document.getElementById('diameter').innerHTML = `d: <i>${diameter}</i>`;
+            document.getElementById('circumference').innerHTML = `C: <i>${circumference.toFixed(2)}</i>`;
+            document.getElementById('area').innerHTML = `A: <i>${area.toFixed(2)}</i>`;
         }
     </script>
 </body>
