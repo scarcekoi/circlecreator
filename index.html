@@ -16,6 +16,17 @@
             color: #cba6f7;
             font-family: Arial, sans-serif;
         }
+        .canvas-container {
+            position: relative;
+        }
+        .controls {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
         .sidebar {
             margin-left: 20px;
             font-family: 'Georgia', serif;
@@ -52,10 +63,13 @@
     </style>
 </head>
 <body>
-    <h1>Circle Drawer</h1>
-    <canvas id="circleCanvas" width="600" height="600"></canvas>
-    <input type="number" id="radiusInput" placeholder="Enter radius" min="1">
-    <button onclick="drawCircle()">Draw Circle</button>
+    <div class="canvas-container">
+        <h1>Circle Drawer</h1>
+        <canvas id="circleCanvas" width="600" height="600"></canvas>
+        <div class="controls">
+            <input type="number" id="radiusInput" placeholder="Enter radius" min="1">
+            <button onclick="drawCircle()">Draw Circle</button>
+        </div>
     </div>
     <div class="sidebar">
         <h2>Circle Properties</h2>
@@ -86,10 +100,12 @@
             ctx.lineWidth = 3;
             ctx.stroke();
 
+            // Calculate properties
             const diameter = 2 * radius;
             const circumference = 2 * Math.PI * radius;
             const area = Math.PI * radius * radius;
 
+            // Update sidebar
             document.getElementById('radius').innerHTML = `r: <i>${radius}</i>`;
             document.getElementById('diameter').innerHTML = `d: <i>${diameter}</i>`;
             document.getElementById('circumference').innerHTML = `C: <i>${circumference.toFixed(2)}</i>`;
